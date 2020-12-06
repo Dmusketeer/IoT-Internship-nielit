@@ -1,0 +1,32 @@
+2)	Perform an experiment to display some text strings on Serial monitor and operate buzzer when TMP36 Sensor Values in deg Celsius 
+            a)	<20-Cold
+            b)	>20 and <30-Average
+            c)	>30 and <50 –Hot
+            d)	>50- Buzzer should rang
+            
+            
+int sensorPin = A0;
+int celsius=0;
+double temp;
+void setup() {
+Serial.begin(9600);
+  pinMode(13,OUTPUT);
+}
+void loop() {
+celsius = map(((analogRead(sensorPin) - 20) * 3.04), 0,
+1023, -40, 125);
+  Serial.print("Temp: ");
+  Serial.print(celsius);
+  Serial.println(" *C");
+  if(celsius < 20){
+  Serial.println("Cold");
+    digitalWrite(13,LOW);
+  }else if (celsius >20 and celsius <30){
+  Serial.println("Average");
+    digitalWrite(13,LOW);
+  }else if (celsius >30 and celsius <50){
+  Serial.println("Hot");
+    digitalWrite(13,LOW);
+  }else if(celsius > 50){
+  digitalWrite(13,HIGH);    }}
+            
