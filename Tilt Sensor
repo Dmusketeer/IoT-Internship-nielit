@@ -1,0 +1,23 @@
+//When the tilt of the sensor is detected, the buzzer and LED should get triggered by Arduino.
+
+const int ledPin = 13; 
+const int swTilt = 2;   
+const int buzzPin=4; 
+int val = 0;
+void setup(){
+Serial.begin(9600);
+pinMode (ledPin, OUTPUT);
+pinMode (buzzPin, OUTPUT);
+pinMode (swTilt, INPUT_PULLUP);
+}
+void loop(){
+val = digitalRead(swTilt);
+if (val == LOW) {
+ digitalWrite(ledPin,HIGH);
+ digitalWrite(buzzPin,HIGH);
+ Serial.println("Tilted");
+}
+else {
+digitalWrite(ledPin,LOW);
+digitalWrite(buzzPin,LOW);
+Serial.println("NOT TILTED");  }}
